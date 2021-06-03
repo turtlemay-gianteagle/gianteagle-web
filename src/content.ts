@@ -16,9 +16,3 @@ async function update() {
 	const v = await waitForElement(".ProductDetail .mb3");
 	v.insertAdjacentElement("afterend", el);
 }
-
-chrome.runtime.onMessage.addListener(({ type }) => {
-	if (type === "CHANGED_URL") {
-		update();
-	}
-});

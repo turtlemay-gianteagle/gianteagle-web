@@ -5,7 +5,6 @@ export function BarcodeWidget() {
 	const [itemInfo, setItemInfo] = React.useState<IItemInfo | null>(null);
 
 	React.useEffect(updateItemInfo, []);
-	React.useEffect(updateChromeChangedUrlListener);
 	React.useEffect(updateMutationObserver);
 
 	return (
@@ -42,16 +41,6 @@ export function BarcodeWidget() {
 			characterData: false,
 		});
 		return () => observer.disconnect();
-	}
-
-	function updateChromeChangedUrlListener() {
-		chrome.runtime.onMessage.addListener(listener);
-		return () => chrome.runtime.onMessage.removeListener(listener);
-		function listener({ type }) {
-			if (type === "CHANGED_URL") {
-				updateItemInfo();
-			}
-		}
 	}
 }
 
