@@ -1,0 +1,19 @@
+{
+	"name": "Turtlemay's Giant Eagle Extension",
+	"version": "0.0.1",
+	"description": "Extension for GiantEagle.com",
+	"manifest_version": 2,
+	"background": {
+		"scripts": ["out/background.js"],
+		"persistent": false
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://*.gianteagle.com/*"],
+			"css": ["css/style.css"],
+			"js": ["out/content.js"]
+		}
+	],
+	"web_accessible_resources": ["*"],
+	"permissions": ["activeTab", "tabs"]
+}
