@@ -6,9 +6,6 @@ import { waitForElement } from "../lib/util";
 import "./search";
 import "./intercom";
 
-const barcodeWidgetRootElem = document.createElement("div");
-barcodeWidgetRootElem.className = "turtlemay__barcodeWidgetRoot";
-
 render(processItemInfo(document.body.textContent));
 
 const observer = new MutationObserver((mutations) => {
@@ -31,6 +28,8 @@ const observer = new MutationObserver((mutations) => {
 });
 
 async function render(itemInfo: IItemInfo | null) {
+	const barcodeWidgetRootElem = document.createElement("div");
+	barcodeWidgetRootElem.className = "turtlemay__barcodeWidgetRoot";
 	const v = await waitForElement(".ProductDetail .mb3");
 	v.insertAdjacentElement("afterend", barcodeWidgetRootElem);
 	ReactDOM.render(
