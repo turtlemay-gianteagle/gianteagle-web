@@ -8,3 +8,8 @@ Requires a browser with [Chrome extension support](https://developer.chrome.com/
 
 Download [latest release](https://github.com/turtlemay-gianteagle/gianteagle-web/releases) to device and load zip file from your browser's extensions UI.
 
+## Screenshot
+
+![](/capture.gif)
+
+![screenshot](/screenshot.png)
