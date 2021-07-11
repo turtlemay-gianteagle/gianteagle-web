@@ -1,6 +1,7 @@
 const path = require("path");
 const { TinyWebpackUserscriptPlugin } = require("tiny-webpack-userscript-plugin");
 const manifestJson = require("./manifest.json");
+const packageJson = require("./package.json");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = [{
@@ -35,7 +36,7 @@ module.exports = [{
 	entry: "./src/content.tsx",
 	plugins: [
 		new TinyWebpackUserscriptPlugin({
-			scriptName: `turtlemay-gianteagle-${manifestJson.version}`,
+			scriptName: `${packageJson.name}-${manifestJson.version}`,
 			headers: [{
 				meta: {
 					name: "Turtlemay Giant Eagle",

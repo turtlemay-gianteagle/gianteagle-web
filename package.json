@@ -1,5 +1,6 @@
 {
 	"private": true,
+	"name": "turtlemay-gianteagle",
 	"scripts": {
 		"start": "webpack -w",
 		"build": "foy build"
