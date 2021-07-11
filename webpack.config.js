@@ -65,7 +65,7 @@ module.exports = [{
 	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
-		filename: `turtlemay-gianteagle-${manifestJson.version}.user.js`,
+		filename: `${packageJson.name}.user.js`,
 	},
 	mode: "production",
 	optimization: {
