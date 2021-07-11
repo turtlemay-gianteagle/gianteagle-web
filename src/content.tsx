@@ -6,6 +6,8 @@ import { waitForElement } from "../lib/util";
 import "./search";
 import "./intercom";
 
+import "../css/style.css";
+
 render(processItemInfo(document.body.textContent));
 
 const observer = new MutationObserver((mutations) => {
