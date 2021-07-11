@@ -1,6 +1,10 @@
 const path = require("path");
+const { TinyWebpackUserscriptPlugin } = require("tiny-webpack-userscript-plugin");
+const manifestJson = require("./manifest.json");
+const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = {
+module.exports = [{
+	name: "extension",
 	entry: {
 		content: "./src/content.tsx",
 	},
@@ -26,4 +30,54 @@ module.exports = {
 	},
 	mode: "development",
 	devtool: "inline-source-map",
-};
+}, {
+	name: "userscript",
+	entry: "./src/content.tsx",
+	plugins: [
+		new TinyWebpackUserscriptPlugin({
+			scriptName: `turtlemay-gianteagle-${manifestJson.version}`,
+			headers: [{
+				meta: {
+					name: "Turtlemay Giant Eagle",
+					namespace: "us.turtlemay.gianteagle",
+					version: manifestJson.version,
+					include: "https://shop.gianteagle.com/*",
+				},
+			}],
+		}),
+	],
+	module: {
+		rules: [
+			{
+				test: /\.css$/i,
+				use: ["style-loader", "css-loader"],
+			},
+			{
+				test: /\.tsx?$/,
+				use: "ts-loader",
+				exclude: /node_modules/,
+			},
+		],
+	},
+	resolve: {
+		extensions: [".tsx", ".ts", ".js"],
+	},
+	output: {
+		path: path.resolve(__dirname, "dist"),
+		filename: `turtlemay-gianteagle-${manifestJson.version}.user.js`,
+	},
+	mode: "production",
+	optimization: {
+		minimize: true,
+		minimizer: [
+			new TerserPlugin({
+				terserOptions: {
+					format: {
+						comments: false,
+					},
+				},
+				extractComments: false,
+			}),
+		],
+	},
+}];
