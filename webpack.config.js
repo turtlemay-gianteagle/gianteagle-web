@@ -39,8 +39,9 @@ module.exports = [{
 			scriptName: `${packageJson.name}-${manifestJson.version}`,
 			headers: [{
 				meta: {
-					name: "Turtlemay Giant Eagle",
+					name: manifestJson.name,
 					namespace: "us.turtlemay.gianteagle",
+					description: manifestJson.description,
 					version: manifestJson.version,
 					include: "https://shop.gianteagle.com/*",
 				},
