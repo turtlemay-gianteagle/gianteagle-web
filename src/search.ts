@@ -1,6 +1,4 @@
-addEventListener("keydown", handleKeyDown);
-
-function handleKeyDown(event: KeyboardEvent) {
+addEventListener("keydown", (event: KeyboardEvent) => {
 	const inputElem: HTMLInputElement | null = document.querySelector(
 		'input[type="text"][aria-label="Search"]'
 	);
@@ -15,4 +13,4 @@ function handleKeyDown(event: KeyboardEvent) {
 			inputElem.focus();
 		}
 	}
-}
+});
