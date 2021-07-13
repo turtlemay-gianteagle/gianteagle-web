@@ -4,6 +4,7 @@ import { BarcodeWidget } from "../components/BarcodeWidget";
 import { waitForElement } from "../lib/util";
 
 import "./search";
+import "./result";
 import "./intercom";
 
 import "../css/style.css";
