@@ -1,3 +1,7 @@
+/**
+ * @file Remove intercom feature.
+ */
+
 import { waitForElement } from "../lib/util";
 
 waitForElement("#intercom-frame").then((v) => v.remove());
