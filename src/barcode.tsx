@@ -1,3 +1,7 @@
+/**
+ * @file Render barcode on product pages.
+ */
+
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { BarcodeWidget } from "../components/BarcodeWidget";
