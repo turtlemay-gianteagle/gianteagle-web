@@ -26,7 +26,7 @@ addEventListener("keydown", (event: KeyboardEvent) => {
 			inputElem.focus();
 			inputElem.value = "";
 		}
-		else if (event.key.match(/^([a-zA-Z])$/)?.[1]) {
+		else if (event.key.match(/^([a-zA-Z])$/)?.[1] && !event.ctrlKey && !event.altKey) {
 			inputElem.focus();
 		}
 	}
