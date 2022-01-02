@@ -13,22 +13,21 @@ addEventListener("keydown", (event: KeyboardEvent) => {
 		return;
 	}
 
+	if (event.key === RESET_KEY) {
+		event.preventDefault();
+		inputElem.focus();
+		inputElem.value = "";
+	}
+
 	// Focus input if not focused.
 	if (document.activeElement?.nodeName !== "INPUT") {
-		if (event.key === "Enter" || event.key === RESET_KEY) {
+		if (event.key === "Enter") {
 			event.preventDefault();
 			inputElem.focus();
 			inputElem.value = "";
 		}
 		else if (event.key.match(/^([a-zA-Z])$/)?.[1]) {
 			inputElem.focus();
-		}
-	}
-
-	if (document.activeElement === inputElem) {
-		if (event.key === RESET_KEY) {
-			event.preventDefault();
-			inputElem.value = "";
 		}
 	}
 });
