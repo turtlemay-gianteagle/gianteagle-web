@@ -12,14 +12,22 @@ render(processItemInfo(document.body.textContent));
 const observer = new MutationObserver((mutations) => {
 	mutations.forEach((mutation) => {
 		mutation.addedNodes.forEach((addedNode) => {
-			if (
-				addedNode instanceof HTMLElement &&
-				addedNode.classList.contains("ProductDetail")
+			let foundItemInfo = null as ReturnType<typeof processItemInfo>;
+
+			// Detect initial item info.
+			if (addedNode instanceof Element && addedNode.classList.contains("ProductDetail")) {
+				foundItemInfo = processItemInfo(addedNode.textContent);	
+			}
+			// Detect changed item info.
+			else if (
+				mutation.target instanceof Element && mutation.target.classList.contains("lh-copy")
 			) {
-				const foundItemInfo = processItemInfo(addedNode.textContent);
-				if (foundItemInfo?.upc) {
-					render(foundItemInfo);
-				}
+				const el = document.querySelector(".ProductDetail");
+				foundItemInfo = processItemInfo(el?.textContent ?? "");
+			}
+			
+			if (foundItemInfo?.upc) {
+				render(foundItemInfo);
 			}
 		});
 	});
@@ -29,8 +37,11 @@ const observer = new MutationObserver((mutations) => {
 });
 
 async function render(itemInfo: IItemInfo | null) {
-	const barcodeWidgetRootElem = document.createElement("div");
-	barcodeWidgetRootElem.className = "turtlemay__barcodeWidgetRoot";
+	let barcodeWidgetRootElem = document.querySelector(".turtlemay__barcodeWidgetRoot");
+	if (!barcodeWidgetRootElem) {
+		barcodeWidgetRootElem = document.createElement("div");
+		barcodeWidgetRootElem.className = "turtlemay__barcodeWidgetRoot";
+	}
 	const v = await waitForElement(".ProductDetail .mb3");
 	v.insertAdjacentElement("afterend", barcodeWidgetRootElem);
 	ReactDOM.render(
