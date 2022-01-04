@@ -16,12 +16,10 @@ const observer = new MutationObserver((mutations) => {
 
 			// Detect initial item info.
 			if (addedNode instanceof Element && addedNode.classList.contains("ProductDetail")) {
-				foundItemInfo = processItemInfo(addedNode.textContent);	
+				foundItemInfo = processItemInfo(addedNode.textContent);
 			}
 			// Detect changed item info.
-			else if (
-				mutation.target instanceof Element && mutation.target.classList.contains("lh-copy")
-			) {
+			else if (mutation.target instanceof Element && mutation.target.classList.contains("lh-copy")) {
 				const el = document.querySelector(".ProductDetail");
 				foundItemInfo = processItemInfo(el?.textContent ?? "");
 			}
