@@ -5,7 +5,7 @@ export function waitForElement(selector: string): Promise<Element> {
 			resolve(elem);
 		}
 		new MutationObserver((mutationRecords, observer) => {
-			Array.from(document.querySelectorAll(selector)).forEach((v) => {
+			document.querySelectorAll(selector).forEach((v) => {
 				resolve(v);
 				observer.disconnect();
 			});
