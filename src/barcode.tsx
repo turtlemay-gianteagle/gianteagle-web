@@ -9,23 +9,26 @@ import { waitForElement } from "../lib/util";
 
 render(processItemInfo(document.body.textContent));
 
+const titleElem = document.querySelector("title");
+
+let foundItemInfo = null as ReturnType<typeof processItemInfo>;
+
+titleElem && new MutationObserver((mutations) => {
+	const el = document.querySelector(".ProductDetail");
+	foundItemInfo = el && processItemInfo(el.textContent);
+	foundItemInfo?.upc && render(foundItemInfo);
+}).observe(titleElem, {
+	characterData: true,
+	childList: true,
+	subtree: true,
+});
+
 document.body && new MutationObserver((mutations) => {
 	mutations.forEach((mutation) => {
 		mutation.addedNodes.forEach((addedNode) => {
-			let foundItemInfo = null as ReturnType<typeof processItemInfo>;
-
-			// Detect initial item info.
 			if (addedNode instanceof Element && addedNode.classList.contains("ProductDetail")) {
 				foundItemInfo = processItemInfo(addedNode.textContent);
-			}
-			// Detect changed item info.
-			else if (mutation.target instanceof Element && mutation.target.classList.contains("lh-copy")) {
-				const el = document.querySelector(".ProductDetail");
-				foundItemInfo = processItemInfo(el?.textContent ?? "");
-			}
-			
-			if (foundItemInfo?.upc) {
-				render(foundItemInfo);
+				foundItemInfo?.upc && render(foundItemInfo);
 			}
 		});
 	});
