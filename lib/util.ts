@@ -1,9 +1,12 @@
 export function waitForElement(selector: string): Promise<Element> {
 	return new Promise((resolve, reject) => {
 		const elem = document.querySelector(selector);
+
 		if (elem) {
 			resolve(elem);
+			return;
 		}
+
 		new MutationObserver((mutationRecords, observer) => {
 			document.querySelectorAll(selector).forEach((v) => {
 				resolve(v);
