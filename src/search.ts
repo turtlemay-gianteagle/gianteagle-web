@@ -5,8 +5,9 @@
 addEventListener("keydown", (event: KeyboardEvent) => {
 	const RESET_KEY = "`";
 
-	const inputElem: HTMLInputElement | null = document.querySelector(
-		'input[type="text"][aria-label="Search"]'
+	const inputElem: HTMLInputElement | null = (
+		document.querySelector('input[type="text"][name="search"]') ??
+		document.querySelector('input[type="text"][aria-label="Search"]')
 	);
 
 	if (!inputElem) {
