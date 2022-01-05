@@ -9,7 +9,7 @@ import { waitForElement } from "../lib/util";
 
 render(processItemInfo(document.body.textContent));
 
-const observer = new MutationObserver((mutations) => {
+document.body && new MutationObserver((mutations) => {
 	mutations.forEach((mutation) => {
 		mutation.addedNodes.forEach((addedNode) => {
 			let foundItemInfo = null as ReturnType<typeof processItemInfo>;
