@@ -5,18 +5,17 @@ export function Barcode(props: { className?: string; itemInfo: IItemInfo }) {
 	const elemRef = React.createRef<HTMLCanvasElement>();
 
 	React.useEffect(() => {
-		if (!props.itemInfo.upc) {
-			return;
+		if (elemRef.current && props.itemInfo.upc) {
+			JsBarcode(elemRef.current, props.itemInfo.upc, {
+				format: "upc",
+				width: 2,
+				height: 20,
+				margin: 5,
+				displayValue: true,
+				fontSize: 15,
+				background: "transparent",
+			});
 		}
-		JsBarcode(elemRef.current as HTMLCanvasElement, props.itemInfo.upc, {
-			format: "upc",
-			width: 2,
-			height: 20,
-			margin: 5,
-			displayValue: true,
-			fontSize: 15,
-			background: "transparent",
-		});
 	});
 
 	return React.createElement("canvas", {
