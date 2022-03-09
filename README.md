@@ -8,7 +8,7 @@ Requires a browser with [Chrome extension support](https://developer.chrome.com/
 
 Userscript version is deployed to [netlify](https://turtlemay-gianteagle-web.netlify.app/turtlemay-gianteagle.user.js). Install via [Tampermonkey](https://www.tampermonkey.net/).
 
-Alternatively, download [latest release](https://github.com/turtlemay-gianteagle/gianteagle-web/releases) to device and load zip file from your browser's extensions UI.
+Alternatively, download [latest release](https://turtlemay-gianteagle-web.netlify.app/turtlemay-gianteagle.zip) to device and load zip file from your browser's extensions UI.
 
 ## Screenshot
 
