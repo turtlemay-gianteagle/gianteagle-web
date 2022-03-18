@@ -42,6 +42,7 @@ module.exports = [{
 					name: manifestJson.name,
 					namespace: "us.turtlemay.gianteagle",
 					description: manifestJson.description,
+					author: manifestJson.author,
 					version: manifestJson.version,
 					include: "https://shop.gianteagle.com/*",
 				},

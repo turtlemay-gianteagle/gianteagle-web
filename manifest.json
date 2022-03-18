@@ -1,5 +1,6 @@
 {
 	"name": "Turtlemay's Giant Eagle Extension",
+	"author": "Turtlemay",
 	"version": "0.4.2",
 	"description": "Extension for GiantEagle.com",
 	"manifest_version": 2,
