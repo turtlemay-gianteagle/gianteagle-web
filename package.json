@@ -3,7 +3,8 @@
 	"name": "turtlemay-gianteagle",
 	"scripts": {
 		"start": "webpack -w",
-		"build": "foy build"
+		"build": "foy build",
+		"postinstall": "foy build"
 	},
 	"devDependencies": {
 		"@types/chrome": "^0.0.174",
